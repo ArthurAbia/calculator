@@ -1,0 +1,63 @@
+.container {
+  border : solid red 1px;
+  max-width: 99%;
+  max-height: 200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 33% 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "result result result result"
+    "input input input input"
+    "seven eight nine plus"
+    "four five six minus"
+    "one two three times"
+    "zero dot equal divide";
+}
+
+.result {
+  grid-area: result;
+}
+
+.input {
+  grid-area: input;
+}
+
+.one{
+  grid-area:one;
+}
+
+.two{
+  grid-area:two;
+}
+
+.three{
+  grid-area:three;
+}
+
+.four{
+  grid-area:four;
+}
+
+.five{
+  grid-area:five;
+}
+
+.six{
+  grid-area:six;
+}
+
+.seven{
+  grid-area:seven;
+}
+
+.eight{
+  grid-area:eight;
+}
+
+.nine{
+  grid-area:nine;
+}
+
+.ten{
+  grid-area:ten;
+}
