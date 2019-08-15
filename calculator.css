@@ -1,25 +1,100 @@
+
+
+*{
+  text-align: center;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1.2em;
+  background-image:
+    url("background.png");
+    background-color: rgba(1,8,79,.8);
+    background-blend-mode: multiply;
+  color:rgb(167,60,90);
+  align-items: center;
+}
+
+
+
+.header{
+  margin : 30px auto;
+  font-family: 'Lobster', sans-serif;
+  font-size: 2em;
+  color: rgb(255,121,84);
+  min-width: 250px;
+  max-width: 45%;
+}
+
 .container {
-  border : solid red 1px;
-  max-width: 99%;
-  max-height: 200px;
+  background-image:
+    url("background.png");
+    background-color: rgba(57,25,84,.9);
+    background-blend-mode: multiply;
+  box-shadow: 0.2em 0.4em black;
+  margin: 0 auto;
+  border : solid rgb(99,30,80) 0.3em;
+  border-radius: 2em;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  max-width: 33%;
+  min-width: 15em;
   display: grid;
+  grid-gap: 15px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 33% 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 33% 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
     "result result result result"
-    "input input input input"
+    "input input input clear"
     "seven eight nine plus"
     "four five six minus"
-    "one two three times"
-    "zero dot equal divide";
+    "one two three multiply"
+    "zero zero dot divide"
+    "equal equal equal del";
+}
+
+.button{
+  border: solid 8px rgb(255,121,84);
+  font-weight: bolder;
+  background-image: none;
+  border-radius: 25px;
+  box-shadow: 0em 0.2em black;
+  background-color: rgb(99,30,80);
+  color: rgb(255,121,84);
+  min-height: 50px;
+  vertical-align: middle;
+  justify-content: center;
+  display: flex;
+}
+
+.button:hover{
+  box-shadow: none;
+  color: rgb(255,255,255);
 }
 
 .result {
+  box-shadow: inset -0.1em -0.1em black;
   grid-area: result;
+  height: 2.5em;
+  background-image: none;
+  background-color: none;
+  border-radius: 25px;
+  vertical-align: middle;
+  justify-content: right;
+  display: flex;
+  font-size: 2.5em;
+  padding: 0px 0.1em;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .input {
+  box-shadow: inset -0.2em -0.2em black;
   grid-area: input;
+  color: rgb(255,121,84);
+  height: 2em;
+  background-image: none;
+  border-radius: 25px;
+  vertical-align: middle;
+  justify-content: right;
+  display: flex;
+  padding: 0px 0.5em;
 }
 
 .one{
@@ -58,6 +133,44 @@
   grid-area:nine;
 }
 
-.ten{
-  grid-area:ten;
+.zero{
+  grid-area:zero;
+}
+
+.dot {
+  grid-area:dot;
+}
+
+.plus {
+  grid-area:plus;
+}
+
+.minus {
+  grid-area:minus;
+}
+
+.multiply {
+  grid-area:multiply;
+}
+
+.divide {
+  grid-area:divide;
+}
+
+.equal {
+  font-size: 2em;
+  grid-area:equal;
+  box-shadow: 0em 0.1em black;
+}
+
+.del {
+  font-size: 2em;
+  grid-area:del;
+  box-shadow: 0em 0.1em black;
+}
+
+.oper{
+  background-color: rgb(255,121,84);
+  border: solid 6px rgb(1,8,79);
+  color: rgb(1,8,79);
 }
