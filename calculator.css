@@ -1,186 +1,179 @@
-
-
-
-
-*{
-  text-align: center;
-  font-family: 'Lexend Deca', sans-serif;
-  font-size: 1.2em;
-  --green-clear: #c5ccb8;
-  --green-dark: #557064;
-  --red: #9a4f50;
-  --orange: #c28d75;
-  --blue: #416aa3;
-  --black: #000000;
-  --purple: #8b5580;
-  --golden: #be955c;
-  background-image:
-    url("background.png");
-    background-color: var(--green-clear);
-    background-blend-mode: multiply;
-  align-items: center;
-  color: var(--green-dark);
+* {
+  --green-clear         : #c5ccb8;
+  --green-dark          : #557064;
+  --red                 : #9a4f50;
+  --orange              : #c28d75;
+  --blue                : #416aa3;
+  --black               : #000000;
+  --purple              : #8b5580;
+  --golden              : #be955c;
+  color                 : var(--green-dark);
+  background-image      : url("background.png");
+  background-color      : var(--green-clear);
+  background-blend-mode : multiply;
+  text-align            : center;
+  align-items           : center;
+  font-family           : 'Lexend Deca',
+                          sans-serif;
+  font-size             : 1.2em;
 }
 
-
-
-.header{
-  margin : 30px auto;
-  font-family: 'Lobster', sans-serif;
-  font-size: 2em;
-  color: var(--red);
-  min-width: 250px;
-  max-width: 45%;
+.header {
+  min-width   : 250px;
+  max-width   : 45%;
+  margin      : 30px auto;
+  color       : var(--red);
+  font-family : 'Lobster',
+                sans-serif;
+  font-size   : 2em;
 }
 
 .container {
-  background-image:
-    url("background.png");
-    background-color:var(--green-clear);
-    background-blend-mode: multiply;
-  box-shadow: 0.2em 0.4em black;
-  margin: 0 auto;
-  border : solid var(--green-dark) 0.7em;
-  border-radius: 2em;
-  padding: 10px 15px;
-  margin-bottom: 20px;
-  max-width: 33%;
-  min-width: 15em;
-  display: grid;
-  grid-gap: 15px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 33% 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas:
-    "result result result result"
-    "input input input clear"
-    "seven eight nine plus"
-    "four five six minus"
-    "one two three multiply"
-    "zero zero dot divide"
-    "equal equal equal del";
+  display               : grid;
+  min-width             : 15em;
+  max-width             : 33%;
+  margin                : 0 auto;
+  margin-bottom         : 20px;
+  padding               : 10px 15px;
+  border                : solid var(--green-dark) .7em;
+  border-radius         : 2em;
+  background-image      : url("background.png");
+  background-color      : var(--green-clear);
+  background-blend-mode : multiply;
+  box-shadow            : .2em .4em var(--black);
+  grid-gap              : 15px;
+  grid-template-columns : 1fr 1fr 1fr 1fr;
+  grid-template-rows    : 33% 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas   : "result result result result"
+                          "input input input clear"
+                          "seven eight nine plus"
+                          "four five six minus"
+                          "one two three multiply"
+                          "zero zero dot divide"
+                          "equal equal equal del";
 }
 
-.button{
-  border: solid 8px var(--green-dark);
-  font-weight: bolder;
-  background-image: none;
-  border-radius: 25px;
-  box-shadow: 0em 0.2em black;
-  min-height: 50px;
-  vertical-align: middle;
-  justify-content: center;
-  display: flex;
+.button {
+  display          : flex;
+  min-height       : 50px;
+  border           : solid 8px var(--green-dark);
+  border-radius    : 25px;
+  background-image : none;
+  box-shadow       : 0 .2em var(--black);
+  vertical-align   : middle;
+  font-weight      : bolder;
+  justify-content  : center;
 }
 
-.button:hover{
-  box-shadow: none;
-  color: var(--orange);
-  transition: 0.1s;
+.button:hover {
+  color      : var(--orange);
+  box-shadow : none;
+  transition : .1s;
 }
 
 .result {
-  box-shadow: inset -0.05em -0.1em black;
-  background-color: var(--blue);
-  background-blend-mode: multiply;
-  background-image: inherit;
-  grid-area: result;
-  height: 2em;
-  border-radius: 25px;
-  justify-content: right;
-  display: flex;
-  font-size: 2.5em;
-  padding: 0px 0.1em;
-  color: var(--green-clear);
+  display               : flex;
+  height                : 2em;
+  padding               : 0px 0.1em;
+  color                 : var(--green-clear);
+  border-radius         : 25px;
+  background-image      : inherit;
+  background-color      : var(--blue);
+  background-blend-mode : multiply;
+  box-shadow            : inset -.05em -.1em var(--black);
+  font-size             : 2.5em;
+  justify-content       : right;
+  grid-area             : result;
 }
 
 .input {
-  box-shadow: inset -0.1em -0.2em black;
-  grid-area: input;
-  background-color: var(--red);
-  background-blend-mode: multiply;
-  height: 2em;
-  border-radius: 25px;
-  justify-content: right;
-  display: flex;
-  padding: 0px 0.5em;
-  color: var(--green-clear);
+  display               : flex;
+  height                : 2em;
+  padding               : 0 .5em;
+  color                 : var(--green-clear);
+  border-radius         : 25px;
+  background-color      : var(--red);
+  background-blend-mode : multiply;
+  box-shadow            : inset -.1em -.2em var(--black);
+  justify-content       : right;
+  grid-area             : input;
 }
 
-.one{
-  grid-area:one;
+.one {
+  grid-area : one;
 }
 
-.two{
-  grid-area:two;
+.two {
+  grid-area : two;
 }
 
-.three{
-  grid-area:three;
+.three {
+  grid-area : three;
 }
 
-.four{
-  grid-area:four;
+.four {
+  grid-area : four;
 }
 
-.five{
-  grid-area:five;
+.five {
+  grid-area : five;
 }
 
-.six{
-  grid-area:six;
+.six {
+  grid-area : six;
 }
 
-.seven{
-  grid-area:seven;
+.seven {
+  grid-area : seven;
 }
 
-.eight{
-  grid-area:eight;
+.eight {
+  grid-area : eight;
 }
 
-.nine{
-  grid-area:nine;
+.nine {
+  grid-area : nine;
 }
 
-.zero{
-  grid-area:zero;
+.zero {
+  grid-area : zero;
 }
 
-.oper{
-  border: solid 6px var(--orange);
-  color: var(--blue);
+.oper {
+  color  : var(--blue);
+  border : solid 6px var(--orange);
 }
 
 .dot {
-  grid-area:dot;
+  grid-area : dot;
 }
 
 .plus {
-  grid-area:plus;
+  grid-area : plus;
 }
 
 .minus {
-  grid-area:minus;
+  grid-area : minus;
 }
 
 .multiply {
-  grid-area:multiply;
+  grid-area : multiply;
 }
 
 .divide {
-  grid-area:divide;
+  grid-area : divide;
 }
 
 .equal {
-  font-size: 2em;
-  grid-area:equal;
-  box-shadow: 0em 0.1em black;
-  border: solid 6px var(--blue);
-  color: var(--orange);
+  color      : var(--orange);
+  border     : solid 6px var(--blue);
+  box-shadow : 0em 0.1em var(--black);
+  font-size  : 2em;
+  grid-area  : equal;
 }
 
 .del {
-  font-size: 2em;
-  grid-area:del;
-  box-shadow: 0em 0.1em black;
+  box-shadow : 0em 0.1em var(--black);
+  font-size  : 2em;
+  grid-area  : del;
 }
