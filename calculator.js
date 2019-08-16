@@ -2,7 +2,7 @@ let add = (a,b) =>  a + b;
 let substract = (a,b) =>  a - b;
 let multiply = (a,b) =>  a * b;
 let divide = (a,b) =>  a / b;
-let operate = (operator, a, b) => {
+let operate = (a,b,operator) => {
   switch (operator) {
     case "+":
       return add(a,b);
@@ -19,35 +19,103 @@ let operate = (operator, a, b) => {
   }
 }
 //Define all buttons and groups of buttons
-let buttons = document.getElementsByClassName('button');
-let operButtons = document.getElementsByClassName('oper');
 let resultDisplay = document.getElementsByClassName('result')[0];
 let inputDisplay = document.getElementsByClassName('input')[0];
-let clearButton = document.getElementsByClassName('clear')[0];
+let buttons = document.getElementsByClassName('button');
+let numbers = document.getElementsByClassName('number');
 let dotButton = document.getElementsByClassName('dot')[0];
+let operButtons = document.getElementsByClassName('oper');
+let clearButton = document.getElementsByClassName('clear')[0];
+let delButton = document.getElementsByClassName('del')[0];
+let equalButton = document.getElementsByClassName('equal')[0];
+let valueMemory = "";
+let allOperands = [];
+
+
 
 //Define the functions
 let toggleButtonAnimation = () => event.target.classList.toggle('clicked');
 let revertClass = () => event.target.classList.toggle('clicked');
 let displayNumber = () => {
-  if (inputDisplay.textContent.length < 15) {
+  if (inputDisplay.textContent.length < 18) {
+    valueMemory += event.target.textContent;
     inputDisplay.textContent += event.target.textContent;
   }
 }
-let blockDecimals = () => {
-  if (inputDisplay.textContent.indexOf(".") > 0) {
-    event.target.removeEventListener("click", displayNumber);
+let displayOperand = () => {
+    if (valueMemory != ""){
+      allOperands.push(parseFloat(valueMemory));
+      allOperands.push(event.target.textContent);
+      valueMemory = "";
+      inputDisplay.textContent += event.target.textContent;
+    }
+}
+
+let addDecimal = () => {
+  if (!(valueMemory.indexOf(".") > -1)) {
+    valueMemory += event.target.textContent;
+    inputDisplay.textContent += event.target.textContent;
   }
 }
 
+let clearDisplay = () => {
+  inputDisplay.textContent = "";
+  resultDisplay.textContent = 0;
+  allOperands = [];
+}
+
+let getFirstOperand = () => {
+  a = inputDisplay.textContent.slice(0,inputDisplay.textContent.length-1);
+  resultDisplay.textContent = a;
+}
+
+let reduceOperator = (array,string) =>{
+  while (array.indexOf(string) > -1){
+    let numberIndex = array.indexOf(string);
+    let newNumber = operate(array[numberIndex - 1], array[numberIndex + 1], array[numberIndex]);
+    array.splice(numberIndex - 1, 3, newNumber);
+  }
+}
+
+let calculate = () => {
+  reduceOperator(allOperands, "*");
+  reduceOperator(allOperands, "/");
+  reduceOperator(allOperands, "+");
+  reduceOperator(allOperands, "-");
+  return parseFloat(allOperands[0]);
+}
+
+let deleteLast = () => {
+  let newInputDisplay = inputDisplay.textContent.slice(0,inputDisplay.textContent.length-1);
+  inputDisplay.textContent = newInputDisplay;
+  let newValueMemory = valueMemory.slice(0,valueMemory.length-1);
+  valueMemory = newValueMemory;
+}
+
+let calculateEquals = () => {
+    if (valueMemory != ""){
+      allOperands.push(parseFloat(valueMemory));
+      valueMemory = "";
+    }
+}
+
+//Assign functions
 Array.from(buttons).forEach( x => {
   x.addEventListener("click", toggleButtonAnimation);
-  x.addEventListener("click", displayNumber);
   x.addEventListener("transitionend", revertClass);
 })
-
-Array.from(operButtons).forEach( x => {
-  x.removeEventListener("click", displayNumber);
+Array.from(numbers).forEach( x => {
+  x.addEventListener("click", displayNumber);
 })
 
-dotButton.addEventListener("click", blockDecimals);
+Array.from(operButtons).forEach (x => {
+  x.addEventListener("click", displayOperand);
+})
+dotButton.addEventListener("click", addDecimal);
+equalButton.removeEventListener("click", displayOperand);
+equalButton.addEventListener("click", calculateEquals);
+equalButton.addEventListener("click", calculate);
+delButton.removeEventListener("click", displayOperand);
+delButton.addEventListener("click", deleteLast);
+clearButton.removeEventListener("click", displayOperand);
+clearButton.addEventListener("click", clearDisplay);

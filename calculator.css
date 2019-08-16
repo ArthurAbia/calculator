@@ -1,3 +1,5 @@
+
+
 * {
   --green-clear         : #c5ccb8;
   --green-dark          : #557064;
@@ -80,6 +82,12 @@
   font-size             : 2.5em;
   justify-content       : flex-end;
   grid-area             : result;
+}
+
+.text {
+  color                 : var(--green-clear);
+  background-image      : none;
+  background-color      : transparent;
 }
 
 .input {
