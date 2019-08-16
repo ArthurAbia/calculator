@@ -9,7 +9,7 @@
   --golden              : #be955c;
   color                 : var(--green-dark);
   background-image      : url("background.png");
-  background-color      : var(--green-clear);
+  background-color      : var(--green-dark);
   background-blend-mode : multiply;
   text-align            : center;
   align-items           : center;
@@ -22,10 +22,10 @@
   min-width   : 250px;
   max-width   : 45%;
   margin      : 30px auto;
-  color       : var(--red);
+  color       : var(--orange);
   font-family : 'Lobster',
                 sans-serif;
-  font-size   : 2em;
+  font-size   : 3.5em;
 }
 
 .container {
@@ -35,15 +35,15 @@
   margin                : 0 auto;
   margin-bottom         : 20px;
   padding               : 10px 15px;
-  border                : solid var(--green-dark) .7em;
+  border                : solid var(--red) .7em;
   border-radius         : 2em;
   background-image      : url("background.png");
   background-color      : var(--green-clear);
   background-blend-mode : multiply;
-  box-shadow            : .2em .4em var(--black);
+  box-shadow            : .2em .4em 0.1em var(--black);
   grid-gap              : 15px;
   grid-template-columns : 1fr 1fr 1fr 1fr;
-  grid-template-rows    : 33% 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows    : 33% 1fr 1fr 1fr 1fr 1fr 2fr;
   grid-template-areas   : "result result result result"
                           "input input input clear"
                           "seven eight nine plus"
@@ -59,16 +59,12 @@
   border           : solid 8px var(--green-dark);
   border-radius    : 25px;
   background-image : none;
-  box-shadow       : 0 .2em var(--black);
+  background-color : var(--green-dark);
+  color            : var(--green-clear);
+  box-shadow       : .1em .1em var(--black);
   vertical-align   : middle;
   font-weight      : bolder;
   justify-content  : center;
-}
-
-.button:hover {
-  color      : var(--orange);
-  box-shadow : none;
-  transition : .1s;
 }
 
 .result {
@@ -142,6 +138,7 @@
 .oper {
   color  : var(--blue);
   border : solid 6px var(--orange);
+  background-color: var(--orange);
 }
 
 .dot {
@@ -164,16 +161,23 @@
   grid-area : divide;
 }
 
+.del {
+  padding    : 10px;
+  box-shadow : 0em 0.1em var(--black);
+  font-size  : 1em;
+  grid-area  : del;
+}
+
 .equal {
-  color      : var(--orange);
+  color      : var(--blue);
   border     : solid 6px var(--blue);
   box-shadow : 0em 0.1em var(--black);
   font-size  : 2em;
   grid-area  : equal;
 }
 
-.del {
-  box-shadow : 0em 0.1em var(--black);
-  font-size  : 2em;
-  grid-area  : del;
+.clicked {
+  color      : var(--orange);
+  box-shadow : inset .07em .1em var(--black);
+  transition : 0.1s;
 }
