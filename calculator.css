@@ -41,9 +41,9 @@
   background-color      : var(--green-clear);
   background-blend-mode : multiply;
   box-shadow            : .2em .4em 0.1em var(--black);
-  grid-gap              : 15px;
+  grid-gap              : 5px;
   grid-template-columns : 1fr 1fr 1fr 1fr;
-  grid-template-rows    : 33% 1fr 1fr 1fr 1fr 1fr 2fr;
+  grid-template-rows    : 33% 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas   : "result result result result"
                           "input input input clear"
                           "seven eight nine plus"
