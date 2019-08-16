@@ -11,6 +11,7 @@
   background-image      : url("background.png");
   background-color      : var(--green-dark);
   background-blend-mode : multiply;
+  background-repeat     : repeat;
   text-align            : center;
   align-items           : center;
   font-family           : 'Lexend Deca',
@@ -37,7 +38,6 @@
   padding               : 10px 15px;
   border                : solid var(--red) .7em;
   border-radius         : 2em;
-  background-image      : url("background.png");
   background-color      : var(--green-clear);
   background-blend-mode : multiply;
   box-shadow            : .2em .4em 0.1em var(--black);
@@ -56,11 +56,11 @@
 .button {
   display          : flex;
   min-height       : 50px;
+  color            : var(--green-clear);
   border           : solid 8px var(--green-dark);
   border-radius    : 25px;
   background-image : none;
   background-color : var(--green-dark);
-  color            : var(--green-clear);
   box-shadow       : .1em .1em var(--black);
   vertical-align   : middle;
   font-weight      : bolder;
@@ -73,7 +73,7 @@
   padding               : 0px 0.1em;
   color                 : var(--green-clear);
   border-radius         : 25px;
-  background-image      : inherit;
+  background-image      : none;
   background-color      : var(--blue);
   background-blend-mode : multiply;
   box-shadow            : inset -.05em -.1em var(--black);
@@ -88,6 +88,7 @@
   padding               : 0 .5em;
   color                 : var(--green-clear);
   border-radius         : 25px;
+  background-image      : none;
   background-color      : var(--red);
   background-blend-mode : multiply;
   box-shadow            : inset -.1em -.2em var(--black);
@@ -136,9 +137,9 @@
 }
 
 .oper {
-  color  : var(--blue);
-  border : solid 6px var(--orange);
-  background-color: var(--orange);
+  color            : var(--blue);
+  border           : solid 6px var(--orange);
+  background-color : var(--orange);
 }
 
 .dot {
