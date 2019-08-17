@@ -14,8 +14,10 @@ let operate = (a,b,operator) => {
       return multiply(a,b);
       break;
     case "/":
-      return divide(a,b);
-      break;
+      if(b != 0) {
+        return divide(a,b);
+        break;
+      }
   }
 }
 //Define all buttons and groups of buttons
@@ -30,8 +32,7 @@ let delButton = document.getElementsByClassName('del')[0];
 let equalButton = document.getElementsByClassName('equal')[0];
 let valueMemory = "";
 let allOperands = [];
-
-
+let resultValue = "";
 
 //Define the functions
 let toggleButtonAnimation = () => event.target.classList.toggle('clicked');
@@ -43,12 +44,17 @@ let displayNumber = () => {
   }
 }
 let displayOperand = () => {
-    if (valueMemory != ""){
-      allOperands.push(parseFloat(valueMemory));
-      allOperands.push(event.target.textContent);
-      valueMemory = "";
-      inputDisplay.textContent += event.target.textContent;
-    }
+  if (valueMemory == "" && resultValue != "") {
+    allOperands.push(parseFloat(resultValue));
+    allOperands.push(event.target.textContent);
+    inputDisplay.textContent = resultValue + event.target.textContent;
+    resultValue = "";
+  } else if (valueMemory != "") {
+    allOperands.push(parseFloat(valueMemory));
+    allOperands.push(event.target.textContent);
+    valueMemory = "";
+    inputDisplay.textContent += event.target.textContent;
+  }
 }
 
 let addDecimal = () => {
@@ -57,16 +63,10 @@ let addDecimal = () => {
     inputDisplay.textContent += event.target.textContent;
   }
 }
-
 let clearDisplay = () => {
   inputDisplay.textContent = "";
-  resultDisplay.textContent = 0;
+  resultDisplay.textContent = "";
   allOperands = [];
-}
-
-let getFirstOperand = () => {
-  a = inputDisplay.textContent.slice(0,inputDisplay.textContent.length-1);
-  resultDisplay.textContent = a;
 }
 
 let reduceOperator = (array,string) =>{
@@ -78,11 +78,21 @@ let reduceOperator = (array,string) =>{
 }
 
 let calculate = () => {
+  if (valueMemory != ""){
+    allOperands.push(parseFloat(valueMemory));
+    valueMemory = "";
+  }
   reduceOperator(allOperands, "*");
   reduceOperator(allOperands, "/");
   reduceOperator(allOperands, "+");
   reduceOperator(allOperands, "-");
-  return parseFloat(allOperands[0]);
+  resultValue = parseFloat(allOperands[0]);
+  if (resultValue != NaN) {
+    resultValue % 1 != 0 ? resultDisplay.textContent = resultValue.toFixed(2)
+    : resultDisplay.textContent = resultValue;
+    inputDisplay.textContent = "";
+    allOperands = [];
+  }
 }
 
 let deleteLast = () => {
@@ -90,13 +100,6 @@ let deleteLast = () => {
   inputDisplay.textContent = newInputDisplay;
   let newValueMemory = valueMemory.slice(0,valueMemory.length-1);
   valueMemory = newValueMemory;
-}
-
-let calculateEquals = () => {
-    if (valueMemory != ""){
-      allOperands.push(parseFloat(valueMemory));
-      valueMemory = "";
-    }
 }
 
 //Assign functions
@@ -111,11 +114,14 @@ Array.from(numbers).forEach( x => {
 Array.from(operButtons).forEach (x => {
   x.addEventListener("click", displayOperand);
 })
+
 dotButton.addEventListener("click", addDecimal);
+
 equalButton.removeEventListener("click", displayOperand);
-equalButton.addEventListener("click", calculateEquals);
 equalButton.addEventListener("click", calculate);
+
 delButton.removeEventListener("click", displayOperand);
 delButton.addEventListener("click", deleteLast);
+
 clearButton.removeEventListener("click", displayOperand);
 clearButton.addEventListener("click", clearDisplay);

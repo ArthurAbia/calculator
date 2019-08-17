@@ -179,10 +179,13 @@
 
 .equal {
   color      : var(--blue);
-  border     : solid 6px var(--blue);
-  box-shadow : 0em 0.1em var(--black);
+  box-shadow : 0em 0.08em var(--black);
+  border: 4px solid var(--golden);
+  background-color: var(--golden);
   font-size  : 2em;
   grid-area  : equal;
+  display: flex;
+  justify-content: center;
 }
 
 .clicked {
