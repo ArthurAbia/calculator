@@ -40,20 +40,20 @@ let revertClass = () => event.target.classList.toggle('clicked');
 let displayNumber = () => {
   if (inputDisplay.textContent.length < 18) {
     valueMemory += event.target.textContent;
-    inputDisplay.textContent += event.target.textContent;
+    inputDisplay.textContent += " " + event.target.textContent;
   }
 }
 let displayOperand = () => {
   if (valueMemory == "" && resultValue != "") {
-    allOperands.push(parseFloat(resultValue));
+    allOperands.push(parseFloat(resultValue.toFixed(2)));
     allOperands.push(event.target.textContent);
-    inputDisplay.textContent = resultValue + event.target.textContent;
+    inputDisplay.textContent = "Ans " + " " + event.target.textContent;
     resultValue = "";
   } else if (valueMemory != "") {
     allOperands.push(parseFloat(valueMemory));
     allOperands.push(event.target.textContent);
     valueMemory = "";
-    inputDisplay.textContent += event.target.textContent;
+    inputDisplay.textContent += " " + event.target.textContent;
   }
 }
 
@@ -87,11 +87,14 @@ let calculate = () => {
   reduceOperator(allOperands, "+");
   reduceOperator(allOperands, "-");
   resultValue = parseFloat(allOperands[0]);
-  if (resultValue != NaN) {
+  if (resultValue === resultValue) {
     resultValue % 1 != 0 ? resultDisplay.textContent = resultValue.toFixed(2)
     : resultDisplay.textContent = resultValue;
     inputDisplay.textContent = "";
     allOperands = [];
+  } else {
+    resultDisplay.textContent = "ERROR :("
+    inputDisplay.textContent = "";
   }
 }
 
